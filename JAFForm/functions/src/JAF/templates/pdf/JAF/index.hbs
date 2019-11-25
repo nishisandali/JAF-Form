@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>JAF Form</title>
+  {{> globalStyles}}
+  {{> styles}}
+</head>
+
+<body>
+  <main>
+    <table class="form-header">
+      <tr>
+        <td id="td1" class="td1" align="left" border="">
+            <p>Sime Darby Industrial Sdn Bhd.</p>
+            <p>Kompleks Kejuruteraan Tractors,</p>
+            <p>Sime Darby Industrial Sdn Bhd.</p>
+            <p>Sime Darby Industrial Sdn Bhd.</p>
+            <p>G.P.O Box 12465, 50778 Kuala Lumpur, Malaysia</p>
+            <p>Tel: 03-8068 8000 Fax:03-8068 8080</p>
+        </td>
+        <td id="td2" class="td2" align="right" border="">
+          <img class="img1" src="http://www.simedarbyindustrial.com/clients/simedarby_industrial/assets/contentMS/img/template/logo-industrial.jpg" >
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td class="table-header top"></td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td>
+        <span><strong>CUSTOMER  :</strong> {{getByName fields 'customerName'}}</span><br>
+        <span><strong>JOB NO    :</strong> {{getByName fields 'projectId'}}</span><br>
+        <span><strong>DATE      :</strong> {{getByName fields 'date'}}</span><br>
+        <span><strong>SERIAL NO :</strong> {{getByName fields 'equipmentSerial'}}</span><br>
+        <span><strong>MODEL     :</strong> {{getByName fields 'equipmentModel'}}</span><br>
+        <span><strong>SMU       :</strong> {{getByName fields 'assetSMU'}}</span><br>
+        <span><strong>WORKSITE  :</strong> {{getByName fields 'worksite'}}</span><br>
+    </table>
+
+    <table>
+      <tr>
+        <td class="table-header top"></td>
+      </tr>
+    </table>
+
+    <table>
+      <span><strong>CUSTOMER COMPLAINT</strong> <br> {{getByName fields 'customerName'}}</span>
+    </table>
+
+    <table>
+      <tr>
+        <td class="table-header top"></td>
+      </tr>
+    </table>
+
+    {{#each (sliceByMappingNames fields 'timeAndMileageDetails' 'detail')}}
+    {{> question}}
+  {{/each}}
+    
+  </main>
+</body>
+
+</html>

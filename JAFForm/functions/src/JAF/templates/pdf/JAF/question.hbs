@@ -1,0 +1,40 @@
+{{#ifCond type 'input-text'}}
+  <br>
+  <table>
+    <tr>
+      <span>{{question}}<br>
+      {{value}}</span>
+    </tr>
+  </table>
+{{/ifCond}}
+
+{{#ifCond type 'table'}}
+<div>
+  <br>
+  <p><b>{{question}}</b></p>
+  <br>
+  <table style="width: 95%" align="center">
+    <thead>
+      <tr>
+        {{#each children}}
+          <th>{{question}}</th>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each value as |val|}}
+        <tr>
+          {{#each ../children}}
+            <td>{{lookup val controlName}}</td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{/ifCond}}
+
+{{#ifCond type 'section'}}
+<br>
+    <span><b><u>{{question}}</u></b></span>
+{{/ifCond}}
