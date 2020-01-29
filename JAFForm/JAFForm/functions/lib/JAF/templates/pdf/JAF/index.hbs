@@ -1,0 +1,154 @@
+<!doctype html>
+
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>JAF Form</title>
+  {{> globalStyles}}
+  {{> styles}}
+</head>
+
+<body>
+  <main>
+    <table class="form-header" align="center">
+      <tr>
+        <td id="td1" class="td1" style="text-align:left;" border="">
+            <p>Sime Darby Industrial Sdn Bhd.</p>
+            <p>Kompleks Kejuruteraan Tractors,</p>
+            <p>1, Jalan Puchong, Taman Perindustrian Puchong Utama,</p>
+            <p>47100 Puchong, Selangor Darul Ehasan,</p>
+            <p>G.P.O Box 12465, 50778 Kuala Lumpur, Malaysia</p>
+            <p>Tel: 03-8068 8000 Fax:03-8068 8080</p>
+        </td>
+        <td id="td2" class="td2" align="right" border="">
+          <img class="img1" src="http://www.simedarbyindustrial.com/clients/simedarby_industrial/assets/contentMS/img/template/logo-industrial.jpg" >
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td class="table-header top"></td>
+      </tr>
+    </table>
+
+    <table align="center">
+      <th style="text-align: center;">{{formName}}</th>
+      <tr>
+        <td style="text-align: left;">
+        <span><strong>CUSTOMER&nbsp;&nbsp;:</strong> {{getByName fields 'customerName'}}</span><br>
+        <span><strong>JOB NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> {{getByName fields 'projectId'}}</span><br>
+        <span><strong>DATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> {{getByName fields 'date'}}</span><br>
+        <span><strong>SERIAL NO&nbsp;&nbsp;:</strong> {{getByName fields 'equipmentSerial'}}</span><br>
+        <span><strong>MODEL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> {{getByName fields 'equipmentModel'}}</span><br>
+        <span><strong>SMU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> {{getByName fields 'assetSMU'}}</span><br>
+        <span><strong>Next Service SMU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> {{getByName fields 'NextSMU'}}</span><br>
+        <span><strong>WORKSITE&nbsp;&nbsp;:</strong> {{getByName fields 'worksite'}}</span><br>
+        </td>
+    </table>
+
+    <table>
+      <tr>
+        <td class="table-header top"></td>
+      </tr>
+    </table>
+
+    <table align="center">
+      <tr><td><span><strong>CUSTOMER COMPLAINT</strong> <br> {{getByName fields 'CustomerComplaint'}}</span></td></tr>
+    </table>
+
+    <table>
+      <tr>
+        <td class="table-header top"></td>
+      </tr>
+    </table>
+
+   {{!-- {{#each (getByName fields 'error')}}
+    <table>
+      <tr>
+        <td class="left-column">Error</td>
+        <td class="table-inside">
+          <table>
+            <tr>
+              <td class="left-column">Category</td>
+              <td>{{this.category.value}}</td>
+            </tr>
+            <tr>
+              <td class="left-column">Description</td>
+              <td>{{this.description}}</td>
+            </tr>
+            <tr>
+              <td class="left-column">Sections</td>
+              <td>{{this.sections.value}}</td>
+            </tr>
+            <tr>
+              <td class="left-column">Photo</td>
+              <td>
+                {{#each this.photoerror}}
+                <img src="{{this.url}}" />
+                {{/each}}
+              </td>
+            </tr>
+            <tr>
+              <td class="left-column">Error resolved</td>
+              <td>{{this.errorresolved}}</td>
+            </tr>
+            <tr>
+              <td class="left-column">Resolution comments</td>
+              <td>{{this.resolutioncomments}}</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    {{/each}} --}}
+
+    {{#each (sliceByMappingNames fields 'timeAndMileageDetails' 'detail')}}
+    {{> question}}
+  {{/each}}
+
+  <table align="center">
+    <br>
+    <tr>
+      <th colspan="2" style="text-align: left;">
+        <u>JOB ACCEPTANCE</u>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 50%">
+        <span>
+          By Sime Darby Industrial Sdn. Bhd. (Service Department)
+          <br>
+          <img class="sign" src="{{getUrlByName fields 'JAFsignature'}}"/>
+          <br>
+          Name : {{getByName fields 'JAFworkerDisplayName'}}
+          <br>
+          SAP ID : {{getByName fields 'JAFworker'}}
+          <br>
+          Date : {{getByName fields 'JAFdate2'}}
+          </span>
+      </td>
+      <td style="width: 50%">
+        <span>
+          <b><u>CERTIFICATION</u></b><br>
+          I certify the correctness of the above and that the job has been carried out to my entire satisfaction
+          <br>
+          <img class="sign" src="{{getUrlByName fields 'JAFsignature2'}}"/>
+          <br>
+          Name : {{getByName fields 'JAFname2'}}
+          <br>
+          IC NO : {{getByName fields 'JAFicNo'}}
+          <br>
+          Date : {{getByName fields 'JAFdate3'}}
+          </span>
+      </td>
+    </tr>
+  </table>
+    
+  </main>
+</body>
+
+</html>
