@@ -1,19 +1,33 @@
 {{#ifCond type 'input-text'}}
+  {{#ifCond question 'Detail'}}
   <br>
-  <table>
-    <tr>
+    <div class="center">
+        <span>{{value}}</span>
+    </div>
+    {{/ifCond}}
+  {{#ifCond question 'CUSTOMER COMPLAINT'}}
+  <br>
+  <table align="center">
+    <tr><td>
       <span>{{question}}<br>
       {{value}}</span>
+      </td>
     </tr>
   </table>
+  {{/ifCond}}
 {{/ifCond}}
 
 {{#ifCond type 'table'}}
 <div>
+  <table align="center">
+    <tr style="text-align: center;">
+      <td>
+        <p><b>{{question}}</b></p>
+        </td>
+        </tr>
+  </table>
   <br>
-  <p><b>{{question}}</b></p>
-  <br>
-  <table style="width: 95%" align="center">
+  <table align="center">
     <thead>
       <tr>
         {{#each children}}
@@ -22,11 +36,18 @@
       </tr>
     </thead>
     <tbody>
-      {{#each value as |val|}}
+      {{#each value}}
         <tr>
-          {{#each ../children}}
-            <td>{{lookup val controlName}}</td>
-          {{/each}}
+            <td>{{timeinCont}}</td>
+            <td>{{timeoutCont}}</td>
+            <td>{{vechCont}}</td>
+            <td>{{milCont}}</td>
+            <td>{{TechCont}}</td>
+            <td>
+              {{#each TechName}}
+                {{value}},
+              {{/each}}
+            </td>
         </tr>
       {{/each}}
     </tbody>
@@ -36,5 +57,9 @@
 
 {{#ifCond type 'section'}}
 <br>
-    <span><b><u>{{question}}</u></b></span>
+<div class="center">
+  <span><b><u>{{question}}</u></b></span>
+</div>
+    
 {{/ifCond}}
+
